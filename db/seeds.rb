@@ -1,6 +1,6 @@
 p "RUNNING SEED FILE"
 require 'dbf'
-
+Hotel.destroy_all
 # puts User.all
 # Hotel.delete_all
 # Delete all Users in DataBase, useful if we're going to run this file a lot.
@@ -21,18 +21,22 @@ hotels.each do |hotel|
   # Hotel.create({phone: hotel_phone, website: nil, zip: nil, address: hotel_address, num_rooms: nil, name: hotel_name})
 end
 
+
+
 def hotell(array)
+  truefalse = [true, false]
   sample = array.sample
-  Hotel.create({website: sample.web_url, phone: sample.phone, zip: sample.zip, address: sample.address, num_rooms: sample.numrooms, name: sample.name})
+  Hotel.create({website: sample.web_url, phone: sample.phone, zip: sample.zip, address: sample.address, num_rooms: sample.numrooms, name: sample.name, breakfast: truefalse.sample, gym: truefalse.sample, pool: truefalse.sample, budget: rand(100)})
 end
 
-50.times do hotell(array_of_hotels)
+30.times do hotell(array_of_hotels)
 end
+
+
 
 # Hotel.create({website: hotel.web_url, phone: hotel.phone, zip: hotel.zip.to_i, address: hotel.address, num_rooms: nil, name: hotel.name})
 # puts Hotel.all
 
-rsvp.create({})
 
 
 
@@ -40,10 +44,11 @@ rsvp.create({})
 
 
 
-Hotel.create({website: 'www.google.com', phone: '123-456-7890', zip: '12345', address: '123 fake street', num_rooms: '10', name: 'Hotel Name Goes Here'})
-Hotel.create({website: 'www.rottentomatoes.com', phone: '456-234-8903', zip: '12345', num_rooms: '1000000000', name: 'Another Hotel'})
-Hotel.create({website: 'www.downloadviruses.com', phone: '345-234-8593', zip: '45352', num_rooms: '500', name: 'A Hotel'})
-Hotel.create({website: 'www.websites.com', phone: '234-567-4869', zip: '224567892385730', num_rooms: '200', name: 'Bad Hotel'})
+
+Hotel.create({website: 'www.google.com', phone: '123-456-7890', zip: '12345', address: '123 fake street', num_rooms: '10', name: 'The Overlook', budget: 0, gym: false, pool: false, breakfast: false})
+Hotel.create({website: 'www.rottentomatoes.com', phone: '456-234-8903', zip: '12345', num_rooms: '1000', name: 'Another Hotel'})
+Hotel.create({website: 'www.downloadviruses.com', phone: '345-234-8593', zip: '45352', num_rooms: '99999999999999999999999999', name: 'The House of Leaves', budget: 0})
+Hotel.create({website: 'www.websites.com', phone: '234-567-4869', zip: '2230', num_rooms: '200', name: 'Bad Hotel'})
 Hotel.create({website: 'www.hotels.com', phone: '849-234-8475', zip: '43287', num_rooms: '10', name: 'Good Hotel'})
 
   

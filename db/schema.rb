@@ -15,22 +15,26 @@ ActiveRecord::Schema.define(version: 20200304172014) do
   create_table "hotels", force: :cascade do |t|
     t.string  "website"
     t.string  "phone"
-    t.integer "zip"
+    t.string  "zip"
     t.string  "address"
     t.integer "num_rooms"
     t.string  "name"
+    t.boolean "gym"
+    t.boolean "pool"
+    t.boolean "breakfast"
+    t.integer "budget"
   end
 
   create_table "rsvps", force: :cascade do |t|
-    t.string  "user_id"
-    t.string  "hotel_id"
-    t.string  "start_date"
-    t.string  "departure_date"
-    t.integer "budget"
-    t.integer "num_rooms"
-    t.boolean "breakfast"
-    t.boolean "pool"
-    t.boolean "gym"
+    t.integer  "user_id"
+    t.integer  "hotel_id"
+    t.datetime "start_date"
+    t.datetime "departure_date"
+    t.integer  "budget"
+    t.integer  "num_rooms"
+    t.boolean  "breakfast"
+    t.boolean  "pool"
+    t.boolean  "gym"
   end
 
   create_table "users", force: :cascade do |t|

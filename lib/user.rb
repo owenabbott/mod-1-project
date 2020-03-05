@@ -50,8 +50,52 @@
 # end
 
 class User < ActiveRecord::Base
-    def self.return_hotels
-        Rsvp.where(Rsvp.user_id = self.id)
+    def book_hotel(num)
+        RSVP.create({user_id: self.id, hotel_id: num, start_date: self.start_date, departure_date: self.departure_date, budget: self.budget, num_rooms: self.num_rooms})
+    end
+    
+    def view_bookings
+        array = [] 
+        array << RSVP.where("rsvps.user_id = ?", self.id)
+        for i in array 
+            i.each do |booking|
+                puts " "
+                puts "|-------------------0---------------------|"
+                puts "|                                         |"
+                puts "| Booking ID: #{booking.id}"
+                # puts "| User Name: #{self.name}               " 
+                # puts "| Available Rooms: #{hotel.num_rooms}     "
+                puts "|                                         |"
+                puts "|-------------------0---------------------|"
+            end
+        end
+   end
+
+    def view_options
+        array = []
+        array << Hotel.where("num_rooms >= ? AND budget <= ?", self.num_rooms, self.budget)
+        puts "Thine options are: "
+        for i in array
+            i.each do |hotel|
+                puts " "
+                puts "|-------------------0---------------------|"
+                puts "|                                         |"
+                puts "| Hotel ID: #{hotel.id}"
+                puts "| Hotel Name: #{hotel.name}" 
+                puts "| Available Rooms: #{hotel.num_rooms}"
+                puts "| Price: #{hotel.budget}"
+                puts "| Has gym? #{hotel.gym} "
+                puts "| Has pool? #{hotel.pool}"
+                puts "| Free breakfast? #{hotel.breakfast} "
+                puts "|                                         |"
+                puts "|-------------------0---------------------|"
+
+            end
+        end
+    end
+
+    def delete_booking(num)
+        RSVP.delete(num)
     end
 end
 

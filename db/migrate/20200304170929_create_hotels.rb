@@ -7,6 +7,10 @@ class CreateHotels < ActiveRecord::Migration[5.0]
       t.string :address
       t.integer :num_rooms
       t.string :name
+      t.boolean :gym
+      t.boolean :pool 
+      t.boolean :breakfast
+      t.integer :budget
     end
   end
 end

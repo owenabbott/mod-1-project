@@ -21,8 +21,9 @@
 #   +----------------------------------------[  C o d e  B e l o w  ]----------------------------------------+
 
 class Hotel < ActiveRecord::Base
-  
-
+  # def room_options
+  #   Hotel.where('num_rooms < = ?', user.num_rooms)
+  # end
 end
 
 
