@@ -127,6 +127,7 @@ def enter_name
     name = name.gsub(/[()-,."']/, '')
 
     puts "Greetings, #{name}."
+
 #gsub bugs out when we use a colon here, need to figure out how to fix that.
 end
 
@@ -162,7 +163,7 @@ def enter_rooms
     num_rooms = gets.chomp
     num_rooms = num_rooms.to_i
         if num_rooms > 0
-            puts "This is the number of people #{num_rooms}"
+            puts "This is the number of rooms you will be booking. #{num_rooms}"
             num_rooms
         else 
             puts "Invalid!"

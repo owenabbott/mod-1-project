@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
         RSVP.create({user_id: self.id, hotel_id: num, start_date: self.start_date, departure_date: self.departure_date, budget: self.budget, num_rooms: self.num_rooms})
     end
     
-    def view_bookings(hotel_name)
+    def view_bookings(hotel_name=nil)
         # hotel = Hotel.where("id = ?", RSVP.hotel_id)
         array = [] 
         array << RSVP.where("rsvps.user_id = ?", self.id)
