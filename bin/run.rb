@@ -125,7 +125,6 @@ def enter_name
 
     name = gets.chomp
     name = name.gsub(/[()-,."']/, '')
-    user = User.new
 
     puts "Greetings, #{name}."
 #gsub bugs out when we use a colon here, need to figure out how to fix that.
@@ -189,16 +188,20 @@ end
     puts "Please select the identification number of the hotel you would like to book"
     selection = gets.chomp
     selection.to_i 
+    hotel = Hotel.where("id = ?", selection)
+    hotel_name = hotel.name
+    #binding.pry
     user.book_hotel(selection)
 
+
     puts "Thank you. Your booking is complete."
-    user.view_bookings
+    user.view_bookings(hotel_name)
 
     option_menu(user)
 
 
     puts "Thank you! Your bookings are:"
-    puts user.view_bookings
+    puts user.view_bookings(hotel_name)
      
     puts "Please enter your credit card number and expiration date and crv and social security number and address and mother's maiden name."
     personal_info = gets.chomp

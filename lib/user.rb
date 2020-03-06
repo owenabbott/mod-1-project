@@ -54,19 +54,23 @@ class User < ActiveRecord::Base
         RSVP.create({user_id: self.id, hotel_id: num, start_date: self.start_date, departure_date: self.departure_date, budget: self.budget, num_rooms: self.num_rooms})
     end
     
-    def view_bookings
+    def view_bookings(hotel_name)
+        # hotel = Hotel.where("id = ?", RSVP.hotel_id)
         array = [] 
         array << RSVP.where("rsvps.user_id = ?", self.id)
         for i in array 
             i.each do |booking|
                 puts " "
-                puts "|-------------------0---------------------|"
-                puts "|                                         |"
+                puts "|-----------------------0---------------------------|"
+                puts "|                                                   |"       
                 puts "| Booking ID: #{booking.id}"
-                # puts "| User Name: #{self.name}               " 
-                # puts "| Available Rooms: #{hotel.num_rooms}     "
-                puts "|                                         |"
-                puts "|-------------------0---------------------|"
+                puts "| Housing Type: #{hotel_name}*"
+                puts "| Number of Rooms: #{booking.num_rooms}"
+                     #"| Cost: #{hotel.budget}                       "
+                puts "| *  TO VIEW HOTEL NAME, BUY PREMIUM SUBSCRIPTION**"
+                puts "| ** Please refer to the last step of application"     
+                puts "|                                                   |"
+                puts "|-----------------------0---------------------------|"
             end
         end
    end
